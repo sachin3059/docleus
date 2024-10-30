@@ -12,7 +12,7 @@ import userRouter from './routes/userRoute.js'
 
 // app config
 const app = express()
-const port = process.env.PORT || 4000
+const PORT = process.env.PORT || 4000
 connectDB()
 connectCloudinary()
 
@@ -34,4 +34,4 @@ app.get('/', (req, res)=>{
 })
 
 
-app.listen(port, ()=> console.log("server started", port))
+app.listen(PORT, ()=> console.log("server started", PORT))
