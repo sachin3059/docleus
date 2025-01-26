@@ -69,7 +69,7 @@ Docleus is a cutting-edge healthcare management platform designed to make doctor
 - GitHub: sachin3059
 
 
-- 🏅 Acknowledgements
+  ## 🏅 Acknowledgements
 - Cloudinary for seamless image uploads.
 - MongoDB for database management.
 - OpenAI for powering the AI symptom checker.
