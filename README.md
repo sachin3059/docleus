@@ -32,7 +32,7 @@ Docleus is a cutting-edge healthcare management platform designed to make doctor
 - **Authentication:** JSON Web Tokens (JWT)  
 
 ---
-- 📋 API Endpoints
+ ## 📋 API Endpoints
 - **Authentication**
 - POST /api/auth/register - Register a new user
 - POST /api/auth/login - User login
@@ -46,12 +46,12 @@ Docleus is a cutting-edge healthcare management platform designed to make doctor
 - GET /api/mental-health - Get user mental health status
 
 
-- 🌐 Live Demo
+ ## 🌐 Live Demo
 - Visit Docleus: https://docleus-frontend.onrender.com/
 
 
 
-- 🤝 Contributing
+## 🤝 Contributing
 - We welcome contributions to make Docleus even better!
 
 - Fork the repo
@@ -61,7 +61,7 @@ Docleus is a cutting-edge healthcare management platform designed to make doctor
 - Create a Pull Request
 
 
-- 📧 Contact
+  ## 📧 Contact
 - For any queries or feedback:
 
 - Sachin Kumar
