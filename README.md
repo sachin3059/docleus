@@ -32,42 +32,44 @@ Docleus is a cutting-edge healthcare management platform designed to make doctor
 - **Authentication:** JSON Web Tokens (JWT)  
 
 ---
-📋 API Endpoints
-Authentication
-POST /api/auth/register - Register a new user
-POST /api/auth/login - User login
-Appointments
-GET /api/appointments - Fetch all appointments
-POST /api/appointments - Book an appointment
-Mental Health
-POST /api/mental-health - Submit mental health feedback
-GET /api/mental-health - Get user mental health status
+- 📋 API Endpoints
+- **Authentication**
+- POST /api/auth/register - Register a new user
+- POST /api/auth/login - User login
+  
+- **Appointments**
+- GET /api/appointments - Fetch all appointments
+- POST /api/appointments - Book an appointment
+  
+- **Mental Health**
+- POST /api/mental-health - Submit mental health feedback
+- GET /api/mental-health - Get user mental health status
 
 
-🌐 Live Demo
-Visit Docleus: https://docleus-frontend.onrender.com/
+- 🌐 Live Demo
+- Visit Docleus: https://docleus-frontend.onrender.com/
 
 
 
-🤝 Contributing
-We welcome contributions to make Docleus even better!
+- 🤝 Contributing
+- We welcome contributions to make Docleus even better!
 
-Fork the repo
-Create a feature branch: git checkout -b feature-name
-Commit changes: git commit -m "Add feature-name"
-Push to the branch: git push origin feature-name
-Create a Pull Request
-
-
-📧 Contact
-For any queries or feedback:
-
-Sachin Kumar
-Email: sachinkum22223@gmail.com
-GitHub: sachin3059
+- Fork the repo
+- Create a feature branch: git checkout -b feature-name
+- Commit changes: git commit -m "Add feature-name"
+- Push to the branch: git push origin feature-name
+- Create a Pull Request
 
 
-🏅 Acknowledgements
-Cloudinary for seamless image uploads.
-MongoDB for database management.
-OpenAI for powering the AI symptom checker.
+- 📧 Contact
+- For any queries or feedback:
+
+- Sachin Kumar
+- Email: sachinkum22223@gmail.com
+- GitHub: sachin3059
+
+
+- 🏅 Acknowledgements
+- Cloudinary for seamless image uploads.
+- MongoDB for database management.
+- OpenAI for powering the AI symptom checker.
