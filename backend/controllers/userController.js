@@ -6,7 +6,7 @@ import {v2 as cloudinary} from 'cloudinary'
 import doctorModel from '../models/doctorModel.js'
 import appointmentModel from '../models/appointmentModel.js'
 import razorpay from 'razorpay'
-import nodemailer from 'nodemailer'
+import transporter from '../config/nodemailer.js'
 
 
 // API to register user:
@@ -403,17 +403,10 @@ const verifyRazorpay = async (req, res) => {
 const contact = async (req, res) => {
     const { name, email, message } = req.body;
   
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.ADMIN_EMAIL, 
-        pass: process.env.ADMIN_PASSWORD 
-      }
-    })
-  
+    
     const mailOptions = {
-      from: email,
-      to: process.env.ADMIN_EMAIL, 
+      to: email,
+      from: process.env.ADMIN_AUTH_EMAIL, 
       subject: `Contact from ${name}`,
       text: message,
     }
@@ -436,6 +429,63 @@ const contact = async (req, res) => {
   }
 
 
+// STRIPE: 
+import Stripe from "stripe";
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+const paymentStripe = async (req, res) => {
+  try {
+    const { appointmentId } = req.body;
+
+    // Fetch appointment details
+    const appointmentData = await appointmentModel.findById(appointmentId);
+    //console.log(appointmentData);
+
+    // Validate appointment
+    if (!appointmentData || appointmentData.cancelAppointment) {
+      return res.status(404).json({
+        success: false,
+        message: 'Appointment cancelled or not found',
+      });
+    }
+
+    // Create a Stripe Checkout Session
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'], // Accept card payments
+      line_items: [
+        {
+          price_data: {
+            currency: 'usd', // Currency (change as needed)
+            product_data: {
+              name: 'Appointment Fee', // Product name
+            },
+            unit_amount: appointmentData.amount * 100, // Amount in cents
+          },
+          quantity: 1, // Quantity of items
+        },
+      ],
+      mode: 'payment', // Payment mode (one-time payment)
+      success_url: `${process.env.FRONTEND_URL}/my-appointments`, // Redirect URL after successful payment
+      cancel_url: `${process.env.FRONTEND_URL}/cancel`, // Redirect URL if payment is canceled
+    });
+
+    // Return the session ID to the frontend
+    res.status(200).json({
+      success: true,
+      appointmentId: appointmentData._id,
+      sessionId: session.id, // Send session ID to frontend
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+
+
 
 export { 
     registerUser ,
@@ -447,5 +497,6 @@ export {
     cancelAppointment,
     paymentRazorpay,
     verifyRazorpay,
-    contact
+    contact,
+    paymentStripe
 }

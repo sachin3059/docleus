@@ -25,6 +25,7 @@ const Contacts = () => {
     e.preventDefault();
     try {
       const response = await axios.post(backendUrl + '/api/user/contact', formData);
+      console.log(response);
       setStatus({ type: 'success', message: 'Message sent successfully!' });
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
@@ -43,7 +44,7 @@ const Contacts = () => {
           <h3 className="font-semibold text-2xl text-gray-800">OUR OFFICE</h3>
           <p className="text-gray-600">212206 Pragraj, UttarPradesh, India</p>
           <p className="text-gray-600">Tel: (215) 555-2321 <br /> Email: docleus@gmail.com</p>
-          <h4 className="font-semibold text-lg text-gray-800">Careers at DocCare+</h4>
+          <h4 className="font-semibold text-lg text-gray-800">Careers at Docleus</h4>
           <p className="text-gray-600">Learn more about our teams and job openings.</p>
           <button className="border border-black px-8 py-2 text-sm hover:bg-black hover:text-white transition-all duration-300 rounded-md">Explore Jobs</button>
         </div>

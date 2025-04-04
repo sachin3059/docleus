@@ -5,7 +5,7 @@ import { assets } from "../assets/assets_frontend/assets"; // Adjust the path if
 
 const Footer = () => {
   return (
-    <footer className="md:mx-10 py-10 mt-36">
+    <footer className="md:mx-10 pl-4 py-10 mt-36 bg-gray-50">
       {/* ----- Main Content ----- */}
       <div className="grid md:grid-cols-[3fr_1fr_1fr] gap-10 text-sm text-gray-700">
         
